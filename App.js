@@ -22,9 +22,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const App = () => {
 
-  useEffect(() => {
+ /* useEffect(() => {
     readData()
   }, [])
+
+  */
 
   const [trees, setTrees] = useState({});
   const [name, setName] = useState('');
@@ -57,7 +59,25 @@ const App = () => {
     AsyncStorage.setItem("trees", JSON.stringify(newState));
   }
 
-  
+  const loadData = async () => {
+    try {
+      const loadTrees = await AsyncStorage.getItem("trees");
+      setTrees(JSON.parse(loadTrees) || {});
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const clearStorage = async () => {
+    try {
+      await AsyncStorage.clear()
+      alert('Storage Empty!')
+    } catch (error) {
+      console.log('Fail..')
+    }
+  }
+
+
 
   return (
     <View style={styles.container}>
