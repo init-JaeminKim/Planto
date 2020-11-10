@@ -14,19 +14,20 @@ import {
   View,
   Text,
   StatusBar,
+  Platform,
 } from 'react-native';
 
 import { v4 as uuidv4 } from 'uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import SplashScreen from 'react-native-splash-screen'
 
 const App = () => {
 
- /* useEffect(() => {
-    readData()
+  useEffect(() => {
+    loadData();
+    SplashScreen.hide();
   }, [])
 
-  */
 
   const [trees, setTrees] = useState({});
   const [name, setName] = useState('');
@@ -76,6 +77,7 @@ const App = () => {
       console.log('Fail..')
     }
   }
+
 
 
 
