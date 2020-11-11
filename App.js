@@ -55,10 +55,7 @@ const App = () => {
       ...newTreeObj
     }
 
-    setTrees({
-      ...trees,
-      ...newTreeObj
-    })
+    setTrees(newState);
 
     AsyncStorage.setItem("trees", JSON.stringify(newState));
   }
@@ -81,15 +78,27 @@ const App = () => {
     }
   }
 
+  const deleteData = (id) => {
+
+    const newState = Object.values(trees).filter((tree) => tree.id !== id);
+    setTrees({...newState});
+    AsyncStorage.setItem("trees", JSON.stringify(newState));
+
+  }
+
+
+
   return (
-    <View style={{flex:1}}>
+    <View style={{ flex: 1 }}>
       <View style={styles.container}>
         <Text>Hello</Text>
       </View>
 
       <ScrollView contentContainerStyle={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         {Object.values(trees).map((tree) => (
-          <Text key={tree.id}>{tree.name}</Text>
+          <TouchableOpacity key={tree.id} onPressOut={() => deleteData(tree.id)}>
+            <Text>{tree.name}</Text>
+          </TouchableOpacity>
         ))}
       </ScrollView>
       <Modals
@@ -97,6 +106,9 @@ const App = () => {
         onChangeText={onChangeText}
         value={name}>
       </Modals>
+      <TouchableOpacity onPressOut={clearStorage}>
+        <Text>clear</Text>
+      </TouchableOpacity>
     </View>
 
   );
