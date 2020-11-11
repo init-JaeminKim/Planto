@@ -15,11 +15,14 @@ import {
   Text,
   StatusBar,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
+
 
 import { v4 as uuidv4 } from 'uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SplashScreen from 'react-native-splash-screen'
+import Modals from './src/components/Modals.js'
 
 const App = () => {
 
@@ -40,7 +43,7 @@ const App = () => {
 
     const newTreeObj = {
       [ID]: {
-        id: id,
+        id: ID,
         name: name,
       }
     }
@@ -78,21 +81,31 @@ const App = () => {
     }
   }
 
-
-
-
   return (
-    <View style={styles.container}>
-      <Text>Hello</Text>
+    <View style={{flex:1}}>
+      <View style={styles.container}>
+        <Text>Hello</Text>
+      </View>
+
+      <ScrollView contentContainerStyle={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        {Object.values(trees).map((tree) => (
+          <Text key={tree.id}>{tree.name}</Text>
+        ))}
+      </ScrollView>
+      <Modals
+        onFinishEditing={onFinishEditing}
+        onChangeText={onChangeText}
+        value={name}>
+      </Modals>
     </View>
+
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
     alignItems: "center",
+    marginTop: 50,
   }
 });
 
