@@ -23,6 +23,8 @@ import { v4 as uuidv4 } from 'uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SplashScreen from 'react-native-splash-screen'
 import Modals from './src/components/Modals.js'
+import DataList from './src/components/DataList.js'
+import Greeting from './src/components/Greeting.js'
 
 const App = () => {
 
@@ -69,15 +71,6 @@ const App = () => {
     }
   }
 
-  const clearStorage = async () => {
-    try {
-      await AsyncStorage.clear()
-      alert('Storage Empty!')
-    } catch (error) {
-      console.log('Fail..')
-    }
-  }
-
   const deleteData = (id) => {
 
     const newState = Object.values(trees).filter((tree) => tree.id !== id);
@@ -90,25 +83,13 @@ const App = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <Text>Hello</Text>
-      </View>
-
-      <ScrollView contentContainerStyle={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        {Object.values(trees).map((tree) => (
-          <TouchableOpacity key={tree.id} onPressOut={() => deleteData(tree.id)}>
-            <Text>{tree.name}</Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+      <Greeting></Greeting>
+      <DataList deleteData={deleteData} trees={trees}></DataList>
       <Modals
         onFinishEditing={onFinishEditing}
         onChangeText={onChangeText}
         value={name}>
       </Modals>
-      <TouchableOpacity onPressOut={clearStorage}>
-        <Text>clear</Text>
-      </TouchableOpacity>
     </View>
 
   );

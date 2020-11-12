@@ -23,8 +23,8 @@ const Modals = (props) => {
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-            <Text style={styles.modalText}>{props.name}</Text>
-            <TextInput value={props.name} placeholder="Here" onChangeText={props.onChangeText}></TextInput>
+            <Text style={styles.modalText}>{props.value}</Text>
+            <TextInput value={props.value} placeholder="Here" onChangeText={props.onChangeText}></TextInput>
 
                         <TouchableHighlight
 
