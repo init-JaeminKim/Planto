@@ -74,7 +74,7 @@ const App = () => {
   const deleteData = (id) => {
 
     const newState = Object.values(trees).filter((tree) => tree.id !== id);
-    setTrees({...newState});
+    setTrees({ ...newState });
     AsyncStorage.setItem("trees", JSON.stringify(newState));
 
   }
@@ -82,7 +82,7 @@ const App = () => {
 
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <Greeting></Greeting>
       <DataList deleteData={deleteData} trees={trees}></DataList>
       <Modals
@@ -97,8 +97,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    marginTop: 50,
+    flex: 1,
   }
 });
 

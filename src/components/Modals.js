@@ -12,7 +12,7 @@ import {
 const Modals = (props) => {
     const [modalVisible, setModalVisible] = useState(false);
     return (
-        <View style={{flex:1,justifyContent:"center", alignItems:'center'}}>
+        <View style={styles.MDVContainer}>
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -23,8 +23,8 @@ const Modals = (props) => {
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-            <Text style={styles.modalText}>{props.value}</Text>
-            <TextInput value={props.value} placeholder="Here" onChangeText={props.onChangeText}></TextInput>
+                        <Text style={styles.modalText}>{props.value}</Text>
+                        <TextInput value={props.value} placeholder="Here" onChangeText={props.onChangeText}></TextInput>
 
                         <TouchableHighlight
 
@@ -48,12 +48,19 @@ const Modals = (props) => {
             >
                 <Text style={styles.textStyle}>Show Modal</Text>
             </TouchableHighlight>
-            
+
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+
+    MDVContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: 'center'
+    },
+
     centeredView: {
         flex: 1,
         justifyContent: "center",
