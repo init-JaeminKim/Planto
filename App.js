@@ -8,14 +8,8 @@
 
 import React, { useEffect, useState } from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
-  Text,
-  StatusBar,
-  Platform,
-  TouchableOpacity,
 } from 'react-native';
 
 

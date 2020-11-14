@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  Alert,
   StyleSheet,
   Text,
   ScrollView,
   TouchableOpacity,
   View,
   Dimensions,
+  FlatList,
 } from "react-native";
 
 const { height, width } = Dimensions.get("window");
@@ -14,35 +14,38 @@ const { height, width } = Dimensions.get("window");
 const DataList = (props) => {
 
   return (
-    <ScrollView contentContainerStyle={styles.SVContainer}>
-      {Object.values(props.trees).map((tree) => (
-        <TouchableOpacity key={tree.id} onLongPress={(event) => { event.stopPropagation, props.deleteData(tree.id) }}>
-          <View style={styles.cardView}>
+    <View style={styles.SVContainer}>
+      <FlatList inverted={false} data={Object.values(props.trees).reverse()}
+        renderItem={({ item }) => (
+          <TouchableOpacity key={item.id} onLongPress={(event) => { event.stopPropagation, props.deleteData(item.id)}}>
+                      <View style={styles.cardView}>
             <View style={styles.item}>
-              <Text>{tree.name}</Text>
+            <Text>{item.name}</Text>
             </View>
-          </View>
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
+            </View>
+          </TouchableOpacity>
+
+        )
+        } numColumns='2'>
+      </FlatList>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
   SVContainer: {
-    flex: 1,
-    flexWrap: 'wrap',
-    alignItems: "flex-start"
+    flex: 2,
   },
   cardView: {
     width: width / 2,
     padding: 30,
     alignItems: "center",
+
   },
   item: {
-    backgroundColor: "#E6AEAA",
-    width: 100,
-    height: 100,
+    backgroundColor: "gray",
+    width: width / 2.5,
+    height: width / 2.5,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
