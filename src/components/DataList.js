@@ -5,15 +5,23 @@ import {
   Text,
   ScrollView,
   TouchableOpacity,
+  View,
+  Dimensions,
 } from "react-native";
+
+const { height, width } = Dimensions.get("window");
 
 const DataList = (props) => {
 
   return (
     <ScrollView contentContainerStyle={styles.SVContainer}>
       {Object.values(props.trees).map((tree) => (
-        <TouchableOpacity key={tree.id} onPressOut={(event) => { event.stopPropagation, props.deleteData(tree.id) }}>
-          <Text>{tree.name}</Text>
+        <TouchableOpacity key={tree.id} onLongPress={(event) => { event.stopPropagation, props.deleteData(tree.id) }}>
+          <View style={styles.cardView}>
+            <View style={styles.item}>
+              <Text>{tree.name}</Text>
+            </View>
+          </View>
         </TouchableOpacity>
       ))}
     </ScrollView>
@@ -23,8 +31,26 @@ const DataList = (props) => {
 const styles = StyleSheet.create({
   SVContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    flexWrap:'wrap',
+    alignItems: "flex-start"
+  },
+  cardView: {
+    width: width / 2,
+    padding: 30,
+    alignItems: "center",
+  },
+  item: {
+    backgroundColor: "gray",
+    width: 100,
+    height: 100,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 3.0,
+    borderRadius: 7,
   }
 })
 
