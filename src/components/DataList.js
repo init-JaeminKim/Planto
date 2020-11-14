@@ -31,7 +31,7 @@ const DataList = (props) => {
 const styles = StyleSheet.create({
   SVContainer: {
     flex: 1,
-    flexWrap:'wrap',
+    flexWrap: 'wrap',
     alignItems: "flex-start"
   },
   cardView: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   item: {
-    backgroundColor: "gray",
+    backgroundColor: "#E6AEAA",
     width: 100,
     height: 100,
     shadowColor: "#000",
