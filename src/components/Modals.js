@@ -11,6 +11,8 @@ import {
 
 const Modals = (props) => {
     const [modalVisible, setModalVisible] = useState(false);
+
+    checkTextLength = (value) => value.length < 3 ? true : false;
     return (
         <View style={styles.MDVContainer}>
             <Modal
@@ -24,17 +26,17 @@ const Modals = (props) => {
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <Text style={styles.modalText}>{props.value}</Text>
-                        <TextInput value={props.value} placeholder="Here" onChangeText={props.onChangeText}></TextInput>
+                        <TextInput maxLength={10} value={props.value} placeholder="Here" onChangeText={props.onChangeText}></TextInput>
 
                         <TouchableHighlight
-
-                            style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+                            disabled={checkTextLength(props.value)}
+                            style={{...styles.openButton, backgroundColor: checkTextLength(props.value) ? "gray" : "#3b6551"}}
                             onPress={() => [
                                 setModalVisible(!modalVisible),
-                                props.onFinishEditing()
+                                props.onFinishEditing(),
                             ]}
                         >
-                            <Text style={styles.textStyle}>Hide Modal</Text>
+                            <Text style={[checkTextLength(props.value) ? styles.disable : styles.textStyle]}>Hide Modal</Text>
                         </TouchableHighlight>
                     </View>
                 </View>
@@ -92,6 +94,10 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
         textAlign: "center"
+    },
+    disable: {
+        color: "white",
+        textAlign: "center",
     },
     modalText: {
         marginBottom: 15,
