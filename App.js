@@ -10,8 +10,10 @@ import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   View,
+  Text,
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { v4 as uuidv4 } from 'uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -20,7 +22,10 @@ import Modals from './src/components/Modals.js'
 import DataList from './src/components/DataList.js'
 import Greeting from './src/components/Greeting.js'
 
-const App = () => {
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Main = () => {
 
   useEffect(() => {
     loadData();
@@ -92,7 +97,42 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#3b6551'
   }
 });
 
-export default App;
+function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
+
+
+const Tab = createBottomTabNavigator()
+
+function MyTabs() {
+  return (
+    <Tab.Navigator initialRouteName="Main" tabBarOptions={{ activeTintColor: 'orange' }}>
+      <Tab.Screen name="Home" component={Main} options={{
+        tabBarIcon: ({ color }) => (
+          <Icon name="home" color={color} inactive size={26} />
+        ),
+      }} />
+      <Tab.Screen name="Settings" component={SettingsScreen} options={{
+        tabBarIcon: ({ color }) => (
+          <Icon name="cog" color={color} inactive size={26} />
+        ),
+      }} />
+    </Tab.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
+  );
+}
