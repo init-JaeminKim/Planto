@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
     disable: {
         color: "white",
         textAlign: "center",
+        fontWeight: "bold",
     },
     modalText: {
         marginBottom: 15,

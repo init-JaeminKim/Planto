@@ -114,15 +114,15 @@ const Tab = createBottomTabNavigator()
 
 function MyTabs() {
   return (
-    <Tab.Navigator initialRouteName="Main" tabBarOptions={{ activeTintColor: 'orange' }}>
+    <Tab.Navigator initialRouteName="Main" tabBarOptions={{ activeTintColor: 'black' }}>
       <Tab.Screen name="Home" component={Main} options={{
         tabBarIcon: ({ color }) => (
-          <Icon name="home" color={color} inactive size={26} />
+          <Icon name="leaf" color={color} inactive size={24} />
         ),
       }} />
       <Tab.Screen name="Settings" component={SettingsScreen} options={{
         tabBarIcon: ({ color }) => (
-          <Icon name="cog" color={color} inactive size={26} />
+          <Icon name="cog" color={color} inactive size={24} />
         ),
       }} />
     </Tab.Navigator>
