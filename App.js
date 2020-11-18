@@ -109,7 +109,6 @@ function SettingsScreen() {
   );
 }
 
-
 const Tab = createBottomTabNavigator()
 
 function MyTabs() {

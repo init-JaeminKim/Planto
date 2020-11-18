@@ -7,10 +7,15 @@ import {
     View,
     Modal,
     TextInput,
+    Dimensions,
 } from "react-native";
+
+const { width, height } = Dimensions.get('window');
 
 const Modals = (props) => {
     const [modalVisible, setModalVisible] = useState(false);
+    const tags = ["red", "green", "orange"];
+
 
     checkTextLength = (value) => value.length < 3 ? true : false;
     return (
@@ -26,11 +31,17 @@ const Modals = (props) => {
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <Text style={styles.modalText}>{props.value}</Text>
-                        <TextInput maxLength={10} value={props.value} placeholder="Here" onChangeText={props.onChangeText}></TextInput>
+                        <TextInput placeholderTextColor="gray" maxLength={10} value={props.value} placeholder="Name you Planto!" onChangeText={props.onChangeText}></TextInput>
+
+                        <View style={{ padding: 50, flexDirection:'row'}}>
+                            {tags.map((c, k) => (
+                                <Text style={{fontSize:15, padding: 10, color:c}} key={k}>{c}</Text>
+                        ))}
+                        </View>
 
                         <TouchableHighlight
                             disabled={checkTextLength(props.value)}
-                            style={{...styles.openButton, backgroundColor: checkTextLength(props.value) ? "gray" : "#3b6551"}}
+                            style={{ ...styles.openButton, backgroundColor: checkTextLength(props.value) ? "gray" : "#3b6551" }}
                             onPress={() => [
                                 setModalVisible(!modalVisible),
                                 props.onFinishEditing(),
@@ -70,6 +81,8 @@ const styles = StyleSheet.create({
         marginTop: 22
     },
     modalView: {
+        width: width / 1.2,
+        height: height / 2,
         margin: 20,
         backgroundColor: "white",
         borderRadius: 20,
