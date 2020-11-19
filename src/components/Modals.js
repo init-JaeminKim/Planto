@@ -9,6 +9,7 @@ import {
     TextInput,
     Dimensions,
 } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const { width, height } = Dimensions.get('window');
 
@@ -33,11 +34,14 @@ const Modals = (props) => {
                         <Text style={styles.modalText}>{props.value}</Text>
                         <TextInput placeholderTextColor="gray" maxLength={10} value={props.value} placeholder="Name you Planto!" onChangeText={props.onChangeText}></TextInput>
 
-                        <View style={{ padding: 50, flexDirection:'row'}}>
-                            {tags.map((c, k) => (
-                                <Text style={{fontSize:15, padding: 10, color:c}} key={k}>{c}</Text>
+                        <View style={{flexDirection: "row"}}>
+                        {tags.map((c, k) => (
+                            <TouchableOpacity style={{ padding: 10}} key={k}>
+                                <View style={{height: 15, width: 15, borderRadius: 7.5, backgroundColor: c }}></View>
+                            </TouchableOpacity>
                         ))}
                         </View>
+
 
                         <TouchableHighlight
                             disabled={checkTextLength(props.value)}
