@@ -36,7 +36,7 @@ const Modals = (props) => {
 
                         <View style={{flexDirection: "row"}}>
                         {tags.map((c, k) => (
-                            <TouchableOpacity style={{ padding: 10}} key={k}>
+                            <TouchableOpacity style={{ padding: 10}} key={k} onPressOut={()=>props.onClickTag(c)}>
                                 <View style={{height: 15, width: 15, borderRadius: 7.5, backgroundColor: c }}></View>
                             </TouchableOpacity>
                         ))}

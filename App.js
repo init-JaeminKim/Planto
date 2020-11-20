@@ -35,6 +35,9 @@ const Main = () => {
 
   const [trees, setTrees] = useState({});
   const [name, setName] = useState('');
+  const [tag, setTag] = useState('');
+
+  const onClickTag = (tag) => console.log(tag);
 
   const onChangeText = name => setName(name);
 
@@ -87,7 +90,9 @@ const Main = () => {
       <Modals
         onFinishEditing={onFinishEditing}
         onChangeText={onChangeText}
-        value={name}>
+        value={name}
+        onClickTag={onClickTag}>
+        
       </Modals>
     </View>
 
