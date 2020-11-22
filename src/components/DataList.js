@@ -21,6 +21,7 @@ const DataList = (props) => {
                       <View style={styles.cardView}>
             <View style={styles.item}>
             <Text>{item.name}</Text>
+            <View style={{height: 15, width: 15, borderRadius: 7.5, backgroundColor: item.tag }}/>
             </View>
             </View>
           </TouchableOpacity>

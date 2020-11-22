@@ -37,7 +37,7 @@ const Main = () => {
   const [name, setName] = useState('');
   const [tag, setTag] = useState('');
 
-  const onClickTag = (tag) => console.log(tag);
+  const onClickTag = (tag) => setTag(tag);
 
   const onChangeText = name => setName(name);
 
@@ -49,6 +49,7 @@ const Main = () => {
       [ID]: {
         id: ID,
         name: name,
+        tag: tag,
       }
     }
 
