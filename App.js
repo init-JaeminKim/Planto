@@ -93,7 +93,7 @@ const Main = () => {
         onChangeText={onChangeText}
         value={name}
         onClickTag={onClickTag}>
-        
+
       </Modals>
     </View>
 

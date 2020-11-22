@@ -15,7 +15,7 @@ const { width, height } = Dimensions.get('window');
 
 const Modals = (props) => {
     const [modalVisible, setModalVisible] = useState(false);
-    const tags = ["red", "green", "orange"];
+    const tags = ["#FF650C", "#00CA4E", "#FFBD44"];
 
 
     checkTextLength = (value) => value.length < 3 ? true : false;
@@ -31,15 +31,19 @@ const Modals = (props) => {
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.modalText}>{props.value}</Text>
+                        <View style={{alignSelf: 'flex-start'}}>
+                            <TouchableOpacity onPressOut={() => setModalVisible(!modalVisible)}>
+                                <View style={{ alignContent: 'flex-start', height: 15, width: 15, borderRadius: 7.5, backgroundColor: 'red' }}></View>
+                            </TouchableOpacity>
+                        </View>
                         <TextInput placeholderTextColor="gray" maxLength={10} value={props.value} placeholder="Name you Planto!" onChangeText={props.onChangeText}></TextInput>
 
-                        <View style={{flexDirection: "row"}}>
-                        {tags.map((c, k) => (
-                            <TouchableOpacity style={{ padding: 10}} key={k} onPressOut={()=>props.onClickTag(c)}>
-                                <View style={{height: 15, width: 15, borderRadius: 7.5, backgroundColor: c }}></View>
-                            </TouchableOpacity>
-                        ))}
+                        <View style={{ flexDirection: "row" }}>
+                            {tags.map((c, k) => (
+                                <TouchableOpacity style={{ padding: 10 }} key={k} onPressOut={() => props.onClickTag(c)}>
+                                    <View style={{ height: 15, width: 15, borderRadius: 7.5, backgroundColor: c }}></View>
+                                </TouchableOpacity>
+                            ))}
                         </View>
 
 
