@@ -37,7 +37,15 @@ const Main = () => {
   const [name, setName] = useState('');
   const [tag, setTag] = useState('');
 
-  const onClickTag = (tag) => setTag(tag);
+  const onClickTag = (tag) => {
+    setTag(tag);
+    console.log(tag);
+  }
+
+  const onDismiss = () => {
+    setTag('');
+    setName('');
+  }
 
   const onChangeText = name => setName(name);
 
@@ -54,6 +62,7 @@ const Main = () => {
     }
 
     setName('');
+    setTag('');
 
     const newState = {
       ...trees,
@@ -91,6 +100,7 @@ const Main = () => {
       <Modals
         onFinishEditing={onFinishEditing}
         onChangeText={onChangeText}
+        onDismiss={onDismiss}
         value={name}
         onClickTag={onClickTag}>
 

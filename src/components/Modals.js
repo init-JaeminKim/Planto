@@ -10,6 +10,7 @@ import {
     Dimensions,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const { width, height } = Dimensions.get('window');
 
@@ -31,9 +32,9 @@ const Modals = (props) => {
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <View style={{alignSelf: 'flex-start'}}>
-                            <TouchableOpacity onPressOut={() => setModalVisible(!modalVisible)}>
-                                <View style={{ alignContent: 'flex-start', height: 15, width: 15, borderRadius: 7.5, backgroundColor: 'red' }}></View>
+                        <View style={{ alignSelf: 'flex-start' }}>
+                            <TouchableOpacity onPressOut={() => [setModalVisible(!modalVisible), props.onDismiss()]}>
+                                <View style={{ height: 15, width: 15, borderRadius: 7.5, backgroundColor: 'red' }}></View>
                             </TouchableOpacity>
                         </View>
                         <TextInput placeholderTextColor="gray" maxLength={10} value={props.value} placeholder="Name you Planto!" onChangeText={props.onChangeText}></TextInput>
@@ -61,14 +62,14 @@ const Modals = (props) => {
                 </View>
             </Modal>
 
-            <TouchableHighlight
+            <TouchableOpacity
                 style={styles.openButton}
                 onPress={() => {
                     setModalVisible(true);
                 }}
             >
-                <Text style={styles.textStyle}>Show Modal</Text>
-            </TouchableHighlight>
+                <Icon name="plus-circle" color='black' inactive size={24} />
+            </TouchableOpacity>
 
         </View>
     );
