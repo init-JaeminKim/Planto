@@ -24,6 +24,7 @@ import Greeting from './src/components/Greeting.js'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { object } from 'prop-types';
 
 const Main = () => {
 
@@ -39,7 +40,6 @@ const Main = () => {
 
   const onClickTag = (tag) => {
     setTag(tag);
-    console.log(tag);
   }
 
   const onDismiss = () => {
@@ -91,12 +91,20 @@ const Main = () => {
 
   }
 
-
+  const updateTree = (id, text) => {
+    
+    console.log(id, text);
+  }
 
   return (
     <View style={styles.container}>
       <Greeting></Greeting>
-      <DataList deleteData={deleteData} trees={trees}></DataList>
+      <DataList deleteData={deleteData}
+        onFinishEditing={onFinishEditing}
+        onChangeText={onChangeText}
+        updateTree={updateTree}
+        value={name}
+        trees={trees}></DataList>
       <Modals
         onFinishEditing={onFinishEditing}
         onChangeText={onChangeText}
