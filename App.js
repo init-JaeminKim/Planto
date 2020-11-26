@@ -47,7 +47,7 @@ const Main = () => {
     setName('');
   }
 
-  const onChangeText = name => setName(name);
+  const onChangeText = (name) => setName(name);
 
   const onFinishEditing = () => {
 
@@ -91,9 +91,16 @@ const Main = () => {
 
   }
 
-  const updateTree = (id, text) => {
-    
-    console.log(id, text);
+  const handleInputChange = (id) => {
+    const newState = trees.map(tree => {
+      if(tree.id === id){
+        tree.name = "123"
+      }
+      return tree;
+    })
+
+    setTrees(newState)
+    console.log(id);
   }
 
   return (
@@ -102,9 +109,10 @@ const Main = () => {
       <DataList deleteData={deleteData}
         onFinishEditing={onFinishEditing}
         onChangeText={onChangeText}
-        updateTree={updateTree}
+        update={handleInputChange}
         value={name}
-        trees={trees}></DataList>
+        trees={trees}
+      ></DataList>
       <Modals
         onFinishEditing={onFinishEditing}
         onChangeText={onChangeText}

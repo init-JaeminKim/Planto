@@ -15,16 +15,21 @@ const { height, width } = Dimensions.get("window");
 const DataList = (props) => {
 
   const [isEditing, setEditing] = useState(false);
-
+  
+ 
   return (
     <View style={styles.SVContainer}>
       <FlatList inverted={false} data={Object.values(props.trees).reverse()}
         renderItem={({ item }) => (
-          <TouchableOpacity key={item.id} onLongPress={(event) => { event.stopPropagation, props.deleteData(item.id) }}>
+          <TouchableOpacity key={item.id} onPressOut={()=>{props.update(item.id)}} onLongPress={(event) => { event.stopPropagation, props.deleteData(item.id) }}>
             <View style={styles.cardView}>
               <View style={styles.item}>
-                <TouchableOpacity onPressOut={() => [props.updateTree(item.id, item.name), setEditing(!isEditing)]}>
+                <TouchableOpacity onPressOut={() => setEditing(!isEditing)}>
+                  {isEditing ? (
+                  <TextInput placeholder="here" value={props.value} onChangeText={props.onChangeText}></TextInput>
+                  ) : (
                   <Text>{item.name}</Text>
+                    )}
                 </TouchableOpacity>
                 <View style={{ height: 15, width: 15, borderRadius: 7.5, backgroundColor: item.tag }} />
               </View>
