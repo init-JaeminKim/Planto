@@ -15,27 +15,37 @@ const { height, width } = Dimensions.get("window");
 const DataList = (props) => {
 
   const [isEditing, setEditing] = useState(false);
-  
- 
+  const [text, setText] = useState('');
+
+  const updateText = (text) => setText(text);
+
   return (
     <View style={styles.SVContainer}>
       <FlatList inverted={false} data={Object.values(props.trees).reverse()}
         renderItem={({ item }) => (
-          <TouchableOpacity key={item.id} onPressOut={()=>{props.update(item.id)}} onLongPress={(event) => { event.stopPropagation, props.deleteData(item.id) }}>
-            <View style={styles.cardView}>
-              <View style={styles.item}>
-                <TouchableOpacity onPressOut={() => setEditing(!isEditing)}>
-                  {isEditing ? (
-                  <TextInput placeholder="here" value={props.value} onChangeText={props.onChangeText}></TextInput>
-                  ) : (
-                  <Text>{item.name}</Text>
-                    )}
-                </TouchableOpacity>
-                <View style={{ height: 15, width: 15, borderRadius: 7.5, backgroundColor: item.tag }} />
+          <View>
+            <TouchableOpacity key={item.id} onLongPress={(event) => { event.stopPropagation, props.deleteData(item.id) }} {...item}>
+              <View style={styles.cardView}>
+                <View style={styles.item}>
+                  <TouchableOpacity onPressOut={() => setEditing(!isEditing)}>
+                    <Text style={{ fontSize: 24 }}>✎</Text>
+                  </TouchableOpacity>
+                  {isEditing
+                    ?
+                    (
+                      <View>
+                        <TouchableOpacity>
+                          <Text style={{ fontSize: 20 }}>✓</Text>
+                        </TouchableOpacity>
+                        <TextInput autoCorrect={false} onSubmitEditing={() => props.onSubmitEditing(item.id)} onChangeText={() => updateText}>{item.name}</TextInput>
+                      </View>
+                    )
+                    : (<Text>{item.name}</Text>)}
+                  <View style={{ height: 15, width: 15, borderRadius: 7.5, backgroundColor: item.tag }} />
+                </View>
               </View>
-            </View>
-          </TouchableOpacity>
-
+            </TouchableOpacity>
+          </View>
         )
         } numColumns='2'>
       </FlatList>

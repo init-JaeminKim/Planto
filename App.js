@@ -91,15 +91,8 @@ const Main = () => {
 
   }
 
-  const handleInputChange = (id) => {
-    const newState = trees.map(tree => {
-      if(tree.id === id){
-        tree.name = "123"
-      }
-      return tree;
-    })
+  const onSubmitEditing = (id) => {
 
-    setTrees(newState)
     console.log(id);
   }
 
@@ -109,7 +102,7 @@ const Main = () => {
       <DataList deleteData={deleteData}
         onFinishEditing={onFinishEditing}
         onChangeText={onChangeText}
-        update={handleInputChange}
+        onSubmitEditing={onSubmitEditing}
         value={name}
         trees={trees}
       ></DataList>
