@@ -91,14 +91,16 @@ const Main = () => {
 
   }
 
-  const onSubmitEditing = (id) => {
+  const onSubmitEditing = (id, text) => {
 
     const newState = Object.values(trees).map((tree)=> {
-      if(tree.id === id){
-        tree.name = "1231";
-        console.log(tree.name);
+      if(tree.id == id){
+        tree.name = text;
       }
     })
+    console.log(text);
+    setTrees({...trees});
+    AsyncStorage.setItem("trees", JSON.stringify({...trees}));
   }
 
   return (
