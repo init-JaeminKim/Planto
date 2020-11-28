@@ -93,7 +93,12 @@ const Main = () => {
 
   const onSubmitEditing = (id) => {
 
-    console.log(id);
+    const newState = Object.values(trees).map((tree)=> {
+      if(tree.id === id){
+        tree.name = "1231";
+        console.log(tree.name);
+      }
+    })
   }
 
   return (

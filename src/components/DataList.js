@@ -9,6 +9,7 @@ import {
   FlatList,
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import { set } from "react-native-reanimated";
 
 const { height, width } = Dimensions.get("window");
 
@@ -34,10 +35,10 @@ const DataList = (props) => {
                     ?
                     (
                       <View>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPressOut={() => setEditing(false)}>
                           <Text style={{ fontSize: 20 }}>✓</Text>
                         </TouchableOpacity>
-                        <TextInput autoCorrect={false} onSubmitEditing={() => props.onSubmitEditing(item.id)} onChangeText={() => updateText}>{item.name}</TextInput>
+                        <TextInput autoCorrect={false} onSubmitEditing={()=> props.onSubmitEditing(item.id)} onChangeText={() => updateText}>{item.name}</TextInput>
                       </View>
                     )
                     : (<Text>{item.name}</Text>)}
