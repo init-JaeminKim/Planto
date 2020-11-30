@@ -24,7 +24,6 @@ import Greeting from './src/components/Greeting.js'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { object } from 'prop-types';
 
 const Main = () => {
 
@@ -98,7 +97,6 @@ const Main = () => {
         tree.name = text;
       }
     })
-    console.log(text);
     setTrees({...trees});
     AsyncStorage.setItem("trees", JSON.stringify({...trees}));
   }
@@ -129,7 +127,7 @@ const Main = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#3b6551'
+    backgroundColor: "#5a8b8e"
   }
 });
 

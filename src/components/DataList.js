@@ -16,10 +16,6 @@ const DataList = (props) => {
 
   const [isEditing, setEditing] = useState(false);
   const [text, setText] = useState('');
-  const newText = '';
-
-
-
 
   return (
     <View style={styles.SVContainer}>
@@ -36,13 +32,13 @@ const DataList = (props) => {
                     ?
                     (
                       <View>
-                        <TouchableOpacity onPressOut={() => setEditing(false)}>
+                        <TouchableOpacity onPressOut={() => {props.onSubmitEditing(item.id, text) ,setEditing(false)}}>
                           <Text style={{ fontSize: 20 }}>✓</Text>
                         </TouchableOpacity>
-                        <TextInput autoCorrect={false} onSubmitEditing={() => props.onSubmitEditing(item.id, text)} onChangeText={(text) => setText(text)}>{item.name}</TextInput>
+                        <TextInput autoCorrect={false} autoCorrect={false} onChangeText={(text) => setText(text)}>{item.name}</TextInput>
                       </View>
                     )
-                    : (<Text>{item.name}</Text>)}
+                    : (<Text style={{color: '#82899e'}}>{item.name}</Text>)}
                   <View style={{ height: 15, width: 15, borderRadius: 7.5, backgroundColor: item.tag }} />
                 </View>
               </View>
@@ -67,17 +63,17 @@ const styles = StyleSheet.create({
   item: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "gray",
+    backgroundColor: "#cccccc",
     width: width / 2.5,
     height: width / 2.5,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 12,
+      height: 3,
     },
-    shadowOpacity: 0.58,
-    shadowRadius: 3.0,
-    borderRadius: 7,
+    shadowOpacity: 0.2,
+    shadowRadius: 0.2,
+    borderRadius: 45,
   }
 })
 
