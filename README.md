@@ -13,14 +13,14 @@
   <p align="center">
     Expected Dec 31, 2020 
     <br />
-    <a href="https://github.com/init-JaeminKim/Planto"><strong>Explore the docs »</strong></a>
+    <a href="#"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/init-JaeminKim/Planto">View Demo</a>
+    <a href="#">View Demo</a>
     ·
-    <a href="https://github.com/init-JaeminKim/Planto">Report Bug</a>
+    <a href="#">Report Bug</a>
     ·
-    <a href="https://github.com/init-JaeminKim/Planto">Request Feature</a>
+    <a href="#">Request Feature</a>
   </p>
 </p>
 
