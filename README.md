@@ -1,6 +1,5 @@
-
-[![MIT License][license-shield]][license-url]  
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/jaemin-kim-8765a01b6/]
+<a href="https://www.linkedin.com/in/jaemin-kim-8765a01b6/">
+<img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" />
 
 <!-- PROJECT LOGO -->
 <br />
@@ -81,6 +80,7 @@ npx react-native run-ios
 <!-- LICENSE -->
 
 ## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
