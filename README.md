@@ -1,5 +1,6 @@
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+
+[![MIT License][license-shield]][license-url]  
+[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/jaemin-kim-8765a01b6/]
 
 <!-- PROJECT LOGO -->
 <br />
