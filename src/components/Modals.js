@@ -16,7 +16,7 @@ const { width, height } = Dimensions.get('window');
 
 const Modals = (props) => {
     const [modalVisible, setModalVisible] = useState(false);
-    const tags = ["#FF650C", "#00CA4E", "#FFBD44"];
+    const tags = ["#f7cfb9", "#f9daab", "#b9dbf7"];
 
 
     checkTextLength = (value) => value.length < 3 ? true : false;
