@@ -24,7 +24,7 @@ const DataList = (props) => {
           <View>
             <TouchableOpacity key={item.id} onLongPress={(event) => { event.stopPropagation, props.deleteData(item.id) }} {...item}>
               <View style={styles.cardView}>
-                <View style={styles.item}>
+                <View style={[styles.item, {backgroundColor: item.tag}]}>
                   <TouchableOpacity onPressOut={() => setEditing(!isEditing)}>
                     <Text style={{ fontSize: 24 }}>✎</Text>
                   </TouchableOpacity>
@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
   item: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "#cccccc",
     width: width / 2.5,
     height: width / 2.5,
     shadowColor: "#000",
