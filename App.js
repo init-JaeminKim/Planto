@@ -92,13 +92,13 @@ const Main = () => {
 
   const onSubmitEditing = (id, text) => {
 
-    const newState = Object.values(trees).map((tree)=> {
-      if(tree.id == id){
+    const newState = Object.values(trees).map((tree) => {
+      if (tree.id == id) {
         tree.name = text;
       }
     })
-    setTrees({...trees});
-    AsyncStorage.setItem("trees", JSON.stringify({...trees}));
+    setTrees({ ...trees });
+    AsyncStorage.setItem("trees", JSON.stringify({ ...trees }));
   }
 
   return (
@@ -127,11 +127,12 @@ const Main = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#22483e"
-  }
+    backgroundColor: "#22483e",
+  },
+
 });
 
-function SettingsScreen() {
+const SettingsScreen = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Settings!</Text>
@@ -143,7 +144,9 @@ const Tab = createBottomTabNavigator()
 
 const MyTabs = () => {
   return (
-    <Tab.Navigator initialRouteName="Main" tabBarOptions={{ activeTintColor: 'black' }}>
+    <Tab.Navigator initialRouteName="Main" tabBarOptions={{
+      activeTintColor: 'black'
+    }}>
       <Tab.Screen name="Home" component={Main} options={{
         tabBarIcon: ({ color }) => (
           <Icon name="leaf" color={color} inactive size={24} />

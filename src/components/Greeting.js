@@ -20,7 +20,7 @@ const Greeting = () => {
 const styles = StyleSheet.create({
     GTContainer: {
         marginTop: 75,
-        marginLeft: 45,
+        marginLeft: 25,
     },
     GTFont: {
         fontSize: 24,
