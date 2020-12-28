@@ -11,19 +11,23 @@ const Greeting = () => {
 
     return (
         <View style={styles.GTContainer}>
-            <Text>Hello</Text>
-            <Text>
-                <Icon name="rocket" size={30} color="#900" />
-            </Text>
-        </View>
+            <Text style={styles.GTFont}>Hello,</Text>
+            <Text style={styles.GTFont}>Just amazing day!</Text>
+        </View >
     )
 }
 
 const styles = StyleSheet.create({
     GTContainer: {
-        marginTop: 100,
-        alignItems: 'center'
+        marginTop: 75,
+        marginLeft: 45,
+    },
+    GTFont: {
+        fontSize: 24,
+        color: '#FFFFFF'
     }
+
+
 })
 
 export default Greeting;

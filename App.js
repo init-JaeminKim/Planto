@@ -141,7 +141,7 @@ function SettingsScreen() {
 
 const Tab = createBottomTabNavigator()
 
-function MyTabs() {
+const MyTabs = () => {
   return (
     <Tab.Navigator initialRouteName="Main" tabBarOptions={{ activeTintColor: 'black' }}>
       <Tab.Screen name="Home" component={Main} options={{

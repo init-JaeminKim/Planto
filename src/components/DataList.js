@@ -57,7 +57,9 @@ const styles = StyleSheet.create({
   },
   cardView: {
     width: width / 2,
-    padding: 30,
+    paddingTop: 30,
+    paddingRight: 15,
+    paddingLeft: 15,
     alignItems: "center",
   },
   item: {
