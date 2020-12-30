@@ -20,7 +20,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import SplashScreen from 'react-native-splash-screen'
 import Modals from './src/components/Modals.js'
 import DataList from './src/components/DataList.js'
-import Greeting from './src/components/Greeting.js'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -103,7 +102,13 @@ const Main = () => {
 
   return (
     <View style={styles.container}>
-      <Greeting></Greeting>
+      <Modals
+        onFinishEditing={onFinishEditing}
+        onChangeText={onChangeText}
+        onDismiss={onDismiss}
+        value={name}
+        onClickTag={onClickTag}>
+      </Modals>
       <DataList deleteData={deleteData}
         onFinishEditing={onFinishEditing}
         onChangeText={onChangeText}
@@ -111,14 +116,6 @@ const Main = () => {
         value={name}
         trees={trees}
       ></DataList>
-      <Modals
-        onFinishEditing={onFinishEditing}
-        onChangeText={onChangeText}
-        onDismiss={onDismiss}
-        value={name}
-        onClickTag={onClickTag}>
-
-      </Modals>
     </View>
 
   );

@@ -21,56 +21,65 @@ const Modals = (props) => {
 
     checkTextLength = (value) => value.length < 3 ? true : false;
     return (
-        <View style={styles.MDVContainer}>
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    Alert.alert("Modal has been closed.");
-                }}
-            >
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <View style={{ alignSelf: 'flex-start' }}>
-                            <TouchableOpacity onPressOut={() => [setModalVisible(!modalVisible), props.onDismiss()]}>
-                                <View style={{ height: 15, width: 15, borderRadius: 7.5, backgroundColor: 'red' }}></View>
-                            </TouchableOpacity>
-                        </View>
-                        <TextInput placeholderTextColor="gray" maxLength={10} value={props.value} placeholder="Name you Planto!" onChangeText={props.onChangeText}></TextInput>
-
-                        <View style={{ flexDirection: "row" }}>
-                            {tags.map((c, k) => (
-                                <TouchableOpacity style={{ padding: 10 }} key={k} onPressOut={() => props.onClickTag(c)}>
-                                    <View style={{ height: 15, width: 15, borderRadius: 7.5, backgroundColor: c }}></View>
-                                </TouchableOpacity>
-                            ))}
-                        </View>
-
-
-                        <TouchableHighlight
-                            disabled={checkTextLength(props.value)}
-                            style={{ ...styles.openButton, backgroundColor: checkTextLength(props.value) ? "gray" : "#3b6551" }}
-                            onPress={() => [
-                                setModalVisible(!modalVisible),
-                                props.onFinishEditing(),
-                            ]}
-                        >
-                            <Text style={[checkTextLength(props.value) ? styles.disable : styles.textStyle]}>Hide Modal</Text>
-                        </TouchableHighlight>
-                    </View>
+        <View>
+            <View style={styles.GTContainer}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={styles.GTFont}>Hello,</Text>
+                        <TouchableOpacity
+                            style={styles.openButton}
+                            onPress={() => {
+                                setModalVisible(true);
+                            }}>
+                            <Icon name="plus-circle" color='black' inactive size={28} />
+                        </TouchableOpacity>
                 </View>
-            </Modal>
+                <View style={{ flexDirection: 'column' }}>
+                    <Text style={styles.GTFont}>Just amazing day!</Text>
+                </View>
+            </View >
+            <View style={styles.MDVContainer}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <View style={{ alignSelf: 'flex-start' }}>
+                                <TouchableOpacity onPressOut={() => [setModalVisible(!modalVisible), props.onDismiss()]}>
+                                    <View style={{ height: 15, width: 15, borderRadius: 7.5, backgroundColor: 'red' }}></View>
+                                </TouchableOpacity>
+                            </View>
+                            <TextInput placeholderTextColor="gray" maxLength={10} value={props.value} placeholder="Name you Planto!" onChangeText={props.onChangeText}></TextInput>
 
-            <TouchableOpacity
-                style={styles.openButton}
-                onPress={() => {
-                    setModalVisible(true);
-                }}
-            >
-                <Icon name="plus-circle" color='black' inactive size={24} />
-            </TouchableOpacity>
+                            <View style={{ flexDirection: "row" }}>
+                                {tags.map((c, k) => (
+                                    <TouchableOpacity style={{ padding: 10 }} key={k} onPressOut={() => props.onClickTag(c)}>
+                                        <View style={{ height: 15, width: 15, borderRadius: 7.5, backgroundColor: c }}></View>
+                                    </TouchableOpacity>
+                                ))}
+                            </View>
 
+
+                            <TouchableHighlight
+                                disabled={checkTextLength(props.value)}
+                                style={{ ...styles.openButton, backgroundColor: checkTextLength(props.value) ? "gray" : "#3b6551" }}
+                                onPress={() => [
+                                    setModalVisible(!modalVisible),
+                                    props.onFinishEditing(),
+                                ]}
+                            >
+                                <Text style={[checkTextLength(props.value) ? styles.disable : styles.textStyle]}>Hide Modal</Text>
+                            </TouchableHighlight>
+                        </View>
+                    </View>
+                </Modal>
+
+
+            </View>
         </View>
     );
 };
@@ -107,9 +116,7 @@ const styles = StyleSheet.create({
         elevation: 5
     },
     openButton: {
-        backgroundColor: "white",
-        borderRadius: 20,
-        padding: 10,
+        marginRight: 20,
         elevation: 2
     },
     textStyle: {
@@ -125,6 +132,15 @@ const styles = StyleSheet.create({
     modalText: {
         marginBottom: 15,
         textAlign: "center"
+    },
+
+    GTContainer: {
+        marginTop: 75,
+        marginLeft: 25,
+    },
+    GTFont: {
+        fontSize: 24,
+        color: '#FFFFFF'
     }
 });
 
