@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
-  ScrollView,
   TouchableOpacity,
   View,
   Dimensions,
@@ -53,20 +52,18 @@ const DataList = (props) => {
 
 const styles = StyleSheet.create({
   SVContainer: {
-    flex: 2,
+    flex: 1,
   },
   cardView: {
     width: width / 2,
-    paddingTop: 30,
-    paddingRight: 15,
-    paddingLeft: 15,
+    marginTop: 25,
     alignItems: "center",
   },
   item: {
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     width: width / 2.5,
-    height: width / 2.5,
+    height: width / 2.0,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -74,7 +71,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 0.2,
-    borderRadius: 45,
+    borderRadius: 40,
   }
 })
 

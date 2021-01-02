@@ -25,13 +25,13 @@ const Modals = (props) => {
             <View style={styles.GTContainer}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={styles.GTFont}>Hello,</Text>
-                        <TouchableOpacity
-                            style={styles.openButton}
-                            onPress={() => {
-                                setModalVisible(true);
-                            }}>
-                            <Icon name="plus-circle" color='black' inactive size={28} />
-                        </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.openButton}
+                        onPress={() => {
+                            setModalVisible(true);
+                        }}>
+                        <Icon name="plus-circle" color='black' inactive size={28} />
+                    </TouchableOpacity>
                 </View>
                 <View style={{ flexDirection: 'column' }}>
                     <Text style={styles.GTFont}>Just amazing day!</Text>
@@ -66,7 +66,7 @@ const Modals = (props) => {
 
                             <TouchableHighlight
                                 disabled={checkTextLength(props.value)}
-                                style={{ ...styles.openButton, backgroundColor: checkTextLength(props.value) ? "gray" : "#3b6551" }}
+                                style={{ ...styles.closeButton, backgroundColor: checkTextLength(props.value) ? "gray" : "#3b6551" }}
                                 onPress={() => [
                                     setModalVisible(!modalVisible),
                                     props.onFinishEditing(),
@@ -87,7 +87,6 @@ const Modals = (props) => {
 const styles = StyleSheet.create({
 
     MDVContainer: {
-        flex: 1,
         justifyContent: "center",
         alignItems: 'center',
     },
@@ -119,6 +118,11 @@ const styles = StyleSheet.create({
         marginRight: 20,
         elevation: 2
     },
+    closeButton: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+    },
     textStyle: {
         color: "white",
         fontWeight: "bold",
@@ -137,6 +141,7 @@ const styles = StyleSheet.create({
     GTContainer: {
         marginTop: 75,
         marginLeft: 25,
+        marginBottom: 15,
     },
     GTFont: {
         fontSize: 24,

@@ -20,6 +20,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import SplashScreen from 'react-native-splash-screen'
 import Modals from './src/components/Modals.js'
 import DataList from './src/components/DataList.js'
+import Noti from './src/components/Noti.js'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -109,6 +110,7 @@ const Main = () => {
         value={name}
         onClickTag={onClickTag}>
       </Modals>
+      <Noti></Noti>
       <DataList deleteData={deleteData}
         onFinishEditing={onFinishEditing}
         onChangeText={onChangeText}
